@@ -9,6 +9,7 @@ use App\Models\ItemClass;
 class Item extends Model {
   use HasFactory;
 
+
   protected $fillable = [
     'item_class_id',
     'name',
@@ -20,8 +21,8 @@ class Item extends Model {
    * Decimal values come out as float or numbers
    */
   protected $casts = [
-    'unit_price' => 'decimal.2',
-    'stock_quantity' => 'decimal.2',
+    'unit_price' => 'decimal:2',
+    'stock_quantity' => 'decimal:2',
   ];
 
   /**

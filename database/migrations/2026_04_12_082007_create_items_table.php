@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_class_id')->constrained('item_classes')->onDelete('cascade');
+            $table->foreignId('item_class_id')->constrained('item_class')->onDelete('cascade');
             $table->string('name')->index();
             $table->decimal('unit_price', 10, 2);
-            $table->integer('stock_quantity', 8, 2)->default(0.00);
+            $table->decimal('stock_quantity', 8, 2)->default(0.00);
             $table->timestamps();
         });
     }
