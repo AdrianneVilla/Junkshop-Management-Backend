@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\Item;
 
 class ItemClass extends Model
 {
@@ -21,6 +22,10 @@ class ItemClass extends Model
   // Scope for dropdown
   public function scopeActive($query) {
     return $query->where('is_active', true);
+  }
+
+  public function items(){
+    return $this->hasMany(Item::class);
   }
 }
 
