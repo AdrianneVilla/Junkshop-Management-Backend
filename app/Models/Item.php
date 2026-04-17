@@ -8,7 +8,7 @@ use App\Models\ItemClass;
 
 class Item extends Model {
   use HasFactory;
-
+  
 
   protected $fillable = [
     'item_class_id',

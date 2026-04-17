@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Services\ItemService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class ItemController extends Controller {
   
@@ -31,9 +32,9 @@ class ItemController extends Controller {
     // Validation
     $validated = $request->validate([
       'item_class_id' => 'required|exists:item_class,id',
-      'name' => 'required|string|max:255',
+      'name' => ['required','string','max:255',Rule::unique('items')],
       'unit_price' => 'required|numeric|min:0',
-      'stock_quantity' => 'required|numeric|min:0'
+      'stock_quantity' => 'required|numeric|min:0',
     ]);
 
     try {
@@ -70,7 +71,7 @@ class ItemController extends Controller {
 
       return response()->json([
         'success' => true,
-        'message' => 'User updated successfully',
+        'message' => 'Item updated successfully',
         'data' => $updatedItem
       ], 200);
 
